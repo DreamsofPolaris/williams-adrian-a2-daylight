@@ -20,7 +20,6 @@ namespace Game10003
         float[] xaxis = [];
         float[] yaxis = [];
         float pelletRadius = 1;
-
         float xCursor;
         float nightzone = 200;
 
