@@ -40,34 +40,40 @@ namespace Game10003
             {
 
                 xaxis[i] = Random.Integer(10, 390);
-                yaxis[i] = Random.Integer(10, 250);
+                yaxis[i] = Random.Integer(10, 390);
             }
         }
-            /// <summary>
-            ///     Update runs every frame.
-            /// </summary>
-            public void Update()
+        /// <summary>
+        ///     Update runs every frame.
+        /// </summary>
+        public void Update()
+        {
+            Window.ClearBackground(daySky);
+
+            Draw.LineSize = 0;
+            Draw.FillColor = sun;
+            Draw.Circle(Input.GetMouseX(), Input.GetMouseY(), 50);
+
+            xCursor = Input.GetMouseX();
+
+            if (xCursor > nightzone)
             {
-                Window.ClearBackground(daySky);
-
-                MakeCloud();
-
-                Draw.LineSize = 0;
-                Draw.FillColor = sun;
+                Window.ClearBackground(nightSky);
+                Draw.FillColor = moon;
                 Draw.Circle(Input.GetMouseX(), Input.GetMouseY(), 50);
+                Draw.FillColor = nightSky;
+                Draw.Circle(Input.GetMouseX() + 20, Input.GetMouseY(), 50);
 
-                xCursor = Input.GetMouseX();
-
-                if (xCursor > nightzone)
+                Draw.FillColor = moon;
+                for (int i = 0; i < xaxis.Length; i++)
                 {
-                    Window.ClearBackground(nightSky);
-                    Draw.FillColor = moon;
-                    Draw.Circle(Input.GetMouseX(), Input.GetMouseY(), 50);
-                    Draw.FillColor = nightSky;
-                    Draw.Circle(Input.GetMouseX() + 20, Input.GetMouseY(), 50);
+                    Draw.Circle(xaxis[i], yaxis[i], pelletRadius);
                 }
 
             }
+
+            MakeCloud();
+
             void MakeCloud()
             {
                 Draw.LineSize = 0;
@@ -85,3 +91,4 @@ namespace Game10003
             }
         }
     }
+}
