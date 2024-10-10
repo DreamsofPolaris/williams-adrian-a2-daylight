@@ -17,6 +17,10 @@ namespace Game10003
         Color moon = new Color(0xfe, 0xfe, 0xfe);
         Color clouds = new Color(0x78, 0x78, 0x9e);
 
+        float[] xaxis = [];
+        float[] yaxis = [];
+        float pelletRadius = 1;
+
         float xCursor;
         float nightzone = 200;
 
@@ -28,45 +32,56 @@ namespace Game10003
             Window.SetTitle("Day to Night");
 
             Window.SetSize(400, 400);
-        }
+            int count = 90;
+            xaxis = new float[count];
+            yaxis = new float[count];
 
-        /// <summary>
-        ///     Update runs every frame.
-        /// </summary>
-        public void Update()
-        {
-            Window.ClearBackground(daySky);
-            
-            MakeCloud();
-
-            Draw.LineSize = 0;
-            Draw.FillColor = sun;
-            Draw.Circle(Input.GetMouseX(), Input.GetMouseY(), 50);
-
-            xCursor = Input.GetMouseX();
-
-            if (xCursor > nightzone)
+            for (int i = 0; i < count; i++)
             {
-                Window.ClearBackground(nightSky);
-                Draw.FillColor = moon;
+
+                xaxis[i] = Random.Integer(10, 390);
+                yaxis[i] = Random.Integer(10, 250);
+            }
+        }
+            /// <summary>
+            ///     Update runs every frame.
+            /// </summary>
+            public void Update()
+            {
+                Window.ClearBackground(daySky);
+
+                MakeCloud();
+
+                Draw.LineSize = 0;
+                Draw.FillColor = sun;
                 Draw.Circle(Input.GetMouseX(), Input.GetMouseY(), 50);
-            }
 
-        }
-        void MakeCloud()
-        {
-            Draw.LineSize = 0;
-            Draw.FillColor = clouds;
-            for (int i = 0; i < 2; i++)
-            {
-                int xoffset = i * 50;
-                Draw.Circle(100 + xoffset, 200, 35);
+                xCursor = Input.GetMouseX();
+
+                if (xCursor > nightzone)
+                {
+                    Window.ClearBackground(nightSky);
+                    Draw.FillColor = moon;
+                    Draw.Circle(Input.GetMouseX(), Input.GetMouseY(), 50);
+                    Draw.FillColor = nightSky;
+                    Draw.Circle(Input.GetMouseX() + 20, Input.GetMouseY(), 50);
+                }
+
             }
-            for (int i = 0; i < 3; i++)
+            void MakeCloud()
             {
-                int xoffset = i * 50;
-                Draw.Circle(80 + xoffset, 230, 35);
+                Draw.LineSize = 0;
+                Draw.FillColor = clouds;
+                for (int i = 0; i < 2; i++)
+                {
+                    int xoffset = i * 50;
+                    Draw.Circle(100 + xoffset, 200, 35);
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    int xoffset = i * 50;
+                    Draw.Circle(80 + xoffset, 230, 35);
+                }
             }
         }
     }
-}
