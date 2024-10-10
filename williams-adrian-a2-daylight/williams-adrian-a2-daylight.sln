@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "williams-adrian-a2-daylight", "williams-adrian-a2-daylight.csproj", "{237E42CD-B738-4D9E-ABCE-4818C81DF68F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "williams-adrian-a2-interactivedrawing", "williams-adrian-a2-interactivedrawing.csproj", "{237E42CD-B738-4D9E-ABCE-4818C81DF68F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
